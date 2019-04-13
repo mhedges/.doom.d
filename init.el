@@ -182,11 +182,9 @@
 
 (load-theme 'doom-nord t)
 (setq doom-nord-brighter-comments 't
-  	  ;doom-nord-comment-bg 't
-	  ;doom-nord (comments "cyan")
 	  )
 
-(set-face-foreground 'font-lock-comment-face "#a4c5e8")
+(set-face-foreground 'font-lock-comment-face "#a9dcfc")
 
 ;(load "art-fhicl-mode.el" nil t t)
 ;(add-to-list 'auto-mode-alist '("\\.fcl$" . art-fhicl-mode))
