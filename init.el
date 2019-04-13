@@ -1,13 +1,6 @@
 ;;; init.el -*- lexical-binding: t; -*-
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
 
-;;(def-package-hook! doom-themes
-;;  :pre-init
-;;  (setq 'doom-city-lights t)
-;;  nil )
-
-(load-theme 'doom-nord t)
-
 (doom! :feature
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        eval              ; run code, run (also, repls)
@@ -89,17 +82,17 @@
 
        :lang
        ;;assembly          ; assembly for fun or debugging
-       ;;(cc +irony +rtags); C/C++/Obj-C madness
+       (cc +irony +rtags); C/C++/Obj-C madness
        ;;clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
-       data              ; config/data formats
+       data                ; config/data formats
        ;;erlang            ; an elegant language for a more civilized age
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
-       emacs-lisp        ; drown in parentheses
+       emacs-lisp          ; drown in parentheses
        ;;ess               ; emacs speaks statistics
        ;;go                ; the hipster dialect
        ;;(haskell +intero) ; a language that's lazier than I am
@@ -162,4 +155,39 @@
        ;; The default module sets reasonable defaults for Emacs. It also
        ;; provides a Spacemacs-inspired keybinding scheme and a smartparens
        ;; config. Use it as a reference for your own modules.
-       (default +bindings +smartparens))
+       (default +bindings +smartparens)
+	   )
+
+;(setq fclKeywords
+; '(
+;   ;; Unfortunately, the comment syntax takes precedence, so this doesn't work
+;   ("#include" . font-lock-keyword-face)
+;   ("@local" . font-lock-keyword-face)
+;   ;; All these names are magic, I think
+;   ("process_name:\\|services:\\|source:\\|outputs:\\|physics:\\|producers:\\|filters:\\|analyzers:||\trigger_paths:||\end-paths:" . font-lock-builtin-face)
+;   ("true\\|false" . font-lock-builtin-face)
+;   ;; Variable definitions are followed by colons
+;   ("[a-zA-Z0-9_]*:" . font-lock-variable-name-face)
+;  )
+;)
+;
+;;; Python mode gets us comment handling and indentation at colons
+;(define-derived-mode fcl-mode python-mode
+;  (setq mode-name "FHICL")
+;  (setq font-lock-defaults '(fclKeywords))
+;;;  (setq tab-width 2) ;; Doesn't seem to work
+;)
+;
+;(add-to-list 'auto-mode-alist '("\\.fcl\\'" . fcl-mode))
+
+(load-theme 'doom-nord t)
+(setq doom-nord-brighter-comments 't
+  	  ;doom-nord-comment-bg 't
+	  ;doom-nord (comments "cyan")
+	  )
+
+(set-face-foreground 'font-lock-comment-face "#a4c5e8")
+
+;(load "art-fhicl-mode.el" nil t t)
+;(add-to-list 'auto-mode-alist '("\\.fcl$" . art-fhicl-mode))
+
