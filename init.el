@@ -123,7 +123,7 @@
        ;;racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client
        ;;ruby              ; 1.step do {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        (sh +fish)        ; she sells (ba|z|fi)sh shells on the C xor
        ;;solidity          ; do you need a blockchain? No.
@@ -179,13 +179,73 @@
 ;)
 ;
 ;(add-to-list 'auto-mode-alist '("\\.fcl\\'" . fcl-mode))
-
-(load-theme 'doom-nord t)
-(setq doom-nord-brighter-comments 't
-	  )
-
-(set-face-foreground 'font-lock-comment-face "#a9dcfc")
-
+;
 ;(load "art-fhicl-mode.el" nil t t)
 ;(add-to-list 'auto-mode-alist '("\\.fcl$" . art-fhicl-mode))
 
+; Turn off ivy-rich (doesn't work and I don't use it)
+;(package! ivy-rich :disable t)
+
+; Use doom-nord theme
+;(load-theme 'doom-nord t)
+
+; Change comment color (old color makes comments invisible)
+(set-face-foreground 'font-lock-comment-face "#a9dcfc")
+
+; Change org-mode todo colors for same reasons
+;(set-face-foreground 'org-headline-done "#a9dcfc")
+;
+;(setq org-tag-face
+; '(("DONE" . (:foreground "#a9dcfc" :weight bold-italic)))
+; )
+
+; Set font
+;(set-face-attribute 'default t :font "Hack Nerd Font Complete" )
+
+; Load zenburn theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/.local/packages/elpa/zenburn-theme-20190510.934/")
+(load-theme 'zenburn t)
+
+(set-face-font 'default "Hack Nerd Font")
+
+; Reconfigure Beamer defaults
+(require 'ox-latex)
+;(add-to-list 'org-latex-classes
+;			 '("beamer"
+;			   "\\documentclass\[presentation\]\{beamer\}"
+;			   ("\\section\{%s\}". "\\section*\{%s\}")
+;			   ("\\subsection\{%s\}")
+;			   ))
+
+
+;(require 'ox-latex)
+;(add-to-list 'org-latex-classes
+;             '("beamer"
+;               "\\documentclass\[presentation\]\{beamer\}"
+;               ("\\section\{%s\}" . "\\section*\{%s\}")
+;               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+;               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+
+;; Use Minted
+;(add-to-list 'org-latex-packages-alist '("" "minted"))
+;(setq org-latex-listings 'minted)
+;; style decision for source code blocks
+;(setq org-latex-minted-options
+;'(("bgcolor" "white") ("frame" "lines")))
+; Don't evaluate code blocks
+;(setq org-export-babel-evaluate nil)
+
+; Change Org elipses
+(setq org-ellipsis "⤵")
+
+; Allow tramp to find custom git installations for magit
+(require 'tramp)
+(add-to-list 'tramp-remote-path "~/usr/local/bin/")
+
+; Configure emacs to find binaries installed with homebrew
+(getenv "PATH")
+(setenv "PATH"
+		(concat
+		  "/usr/local/bin" ":"
+
+(getenv"PATH")))

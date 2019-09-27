@@ -8,3 +8,7 @@
 (package! ox-html)
 (package! ox-latex)
 (package! ox-beamer :recipe ())
+(package! exec-path-from-shell)
+(package! dumb-jump)
+(package! irony)
+(package! irony-server)
