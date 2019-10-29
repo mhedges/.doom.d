@@ -2,8 +2,6 @@
 
 ;; Place your private configuration here
 
-
-
 ; Load zenburn theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/.local/straight/build/zenburn-theme/")
 (load-theme 'zenburn t)
@@ -27,14 +25,7 @@
 (require 'tramp)
 (add-to-list 'tramp-remote-path "~/usr/local/bin/")
 
-; Configure emacs to find binaries installed with homebrew
-;(getenv "PATH")
-;(setenv "PATH"
-;		(concat
-;		  "/usr/local/bin" ":"
-;
-;(getenv"PATH")))
-
+; Inherit shell PATH variable for executables in emacs
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
   (exec-path-from-shell-copy-env "PATH")
