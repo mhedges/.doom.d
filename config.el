@@ -3,7 +3,7 @@
 ;; Place your private configuration here
 
 ; Load zenburn theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/.local/straight/build/zenburn-theme/")
+;(add-to-list 'custom-theme-load-path "~/.emacs.d/.local/straight/build/zenburn-theme/")
 (load-theme 'zenburn t)
 
 ; Set font
@@ -26,6 +26,9 @@
 (add-to-list 'tramp-remote-path "~/usr/local/bin/")
 
 ; Inherit shell PATH variable for executables in emacs
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
-  (exec-path-from-shell-copy-env "PATH")
+;(when (memq window-system '(mac ns x))
+;  (exec-path-from-shell-initialize))
+;  (exec-path-from-shell-copy-env "PATH")
+
+(setq tramp-verbose 10)
+(customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
