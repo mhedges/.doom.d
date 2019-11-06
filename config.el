@@ -3,11 +3,10 @@
 ;; Place your private configuration here
 
 ; Load zenburn theme
-;(add-to-list 'custom-theme-load-path "~/.emacs.d/.local/straight/build/zenburn-theme/")
 (load-theme 'zenburn t)
 
-; Set font
-(set-face-font 'default "Hack Nerd Font")
+; Set font (I don't know if this actually works)
+(setq doom-font (font-spec :family "Hack Nerd Font" :size 12))
 
 ;; Use Minted
 ;(add-to-list 'org-latex-packages-alist '("" "minted"))
@@ -30,5 +29,15 @@
 ;  (exec-path-from-shell-initialize))
 ;  (exec-path-from-shell-copy-env "PATH")
 
+; Tramp options to make it suck less, and to give more debug info when it still
+; sucks
 (setq tramp-verbose 10)
 (customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
+(setq explicit-shell-file-name "/bin/bash")
+
+; Configure doom-modeline
+(setq doom-modeline-project-detection 'project)
+(setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
+(setq doom-modeline-ic9on (display-graphic-p))
+(setq doom-modeline-major-mode-icon t)
+(setq doom-modeline-majormode-color-icon t)
