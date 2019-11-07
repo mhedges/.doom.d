@@ -23,6 +23,7 @@
 ; Allow tramp to find custom git installations for magit
 (require 'tramp)
 (add-to-list 'tramp-remote-path "~/usr/local/bin/")
+(add-to-list 'tramp-remote-path "~/.cargo/bin/")
 
 ; Inherit shell PATH variable for executables in emacs
 ;(when (memq window-system '(mac ns x))
@@ -34,6 +35,7 @@
 (setq tramp-verbose 10)
 (customize-set-variable 'tramp-use-ssh-controlmaster-options nil)
 (setq explicit-shell-file-name "/bin/bash")
+(setq shell-file-name "/bin/bash")
 
 ; Configure doom-modeline
 (setq doom-modeline-project-detection 'project)
@@ -41,3 +43,6 @@
 (setq doom-modeline-ic9on (display-graphic-p))
 (setq doom-modeline-major-mode-icon t)
 (setq doom-modeline-majormode-color-icon t)
+
+; dumb-jump configuration
+(setq dumb-jump-prefer-sercher 'ag)
