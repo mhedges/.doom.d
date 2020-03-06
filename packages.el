@@ -17,3 +17,5 @@
 (package! treemacs-magit)
 (package! treemacs-icons-dired)
 (package! org-super-agenda)
+(package! minted)
+(package! dired-rsync)
