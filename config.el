@@ -27,3 +27,6 @@
 (setq doom-modeline-icon (display-graphic-p))
 (setq doom-modeline-major-mode-icon t)
 (setq doom-modeline-major-mode-color-icon t)
+
+; Org-superstar bullets
+(setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))

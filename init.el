@@ -31,6 +31,10 @@
 	  )
 	)
   nil
+
+  (use-package! org-superstar
+    :hook (org-mode . org-superstar-mode)
+    )
   )
 
 (doom! :input
