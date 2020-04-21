@@ -12,6 +12,7 @@
 (package! org-super-agenda)
 (package! org-superstar)
 (package! flycheck-clang-tidy)
+(package! vterm)
 
 ;;; Turn off stock packages
 (disable-packages! org-bullets)
