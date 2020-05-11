@@ -30,3 +30,11 @@
 
 ; Org-superstar bullets
 (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+
+;; Set minted for org
+;; (setq org-latex-pdf-process
+;; 	  '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+;; 	    "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+;; 	    "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+;; (add-to-list 'org-latex-packages-alist '("minted"))
+;; (setq org-latex-listings 'minted)

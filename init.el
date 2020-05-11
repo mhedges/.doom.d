@@ -18,13 +18,13 @@
   (setq org-todo-keywords
 	'((sequence
 		"📥(t)"    ; Task that needs to be done
-		"🤔💭(i)"  ; An idea or thought to be considered.  Could later become a task/project
 		"👷🛠(s)"  ; Task that has been started
 		"|"
 		"🎉😎(d)"  ; Task has been completed
 		"💀👻(k)"  ; Task has been killed without completion
 		"|"
 		"📅📝(m)"  ; Meeting
+		"🤔💭(i)"  ; An idea or thought to be considered.  Could later become a task/project
 		))
 	org-todo-keyword-faces
 	'(("👷🛠"  .  +org-todo-active)
@@ -72,7 +72,7 @@
         +defaults)       ; default popup rules
        ;;pretty-code       ; replace bits of code with pretty symbols
        ;;tabs              ; an tab bar for Emacs
-       ;;treemacs          ; a project drawer, like neotree but cooler
+       treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
@@ -103,7 +103,7 @@
        ;;eshell            ; a consistent, cross-platform shell (WIP)
        ;;shell             ; a terminal REPL for Emacs
        ;;term              ; terminals in Emacs
-       ;;vterm             ; another terminals in Emacs
+       vterm             ; another terminals in Emacs
 
        :tools
        ;;ansible
@@ -114,7 +114,7 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        flycheck          ; tasing you for every semicolon you forget
-       ;;flyspell          ; tasing you for misspelling mispelling
+       flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
@@ -170,6 +170,9 @@
         +ipython         ; ipython/jupyter support for babel
         +pandoc          ; export-with-pandoc support
         ;+pomodoro        ; be fruitful with the tomato technique
+		+roam              ; Roam Research, but in emacs
+		+dragndrop         ; Drag 'n drop into org files
+		+journal           ; Journal/log in org
         +present)        ; using org-mode for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
