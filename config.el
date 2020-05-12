@@ -31,6 +31,10 @@
 ; Org-superstar bullets
 (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
 
+(setq org-agenda-files '("~/org/logbook"
+						 "~/org/logbook/archive/2019"
+						 "~/org/logbook/archive/2020"
+						 "~/org/roam"))
 ;; Set minted for org
 ;; (setq org-latex-pdf-process
 ;; 	  '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
