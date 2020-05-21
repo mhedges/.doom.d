@@ -13,6 +13,9 @@
 (package! org-superstar)
 (package! flycheck-clang-tidy)
 (package! multi-vterm)
+(package! org-roam)
+(package! emms)
+  
 
 ;;; Turn off stock packages
 (disable-packages! org-bullets)
