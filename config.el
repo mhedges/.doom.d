@@ -2,8 +2,13 @@
 
 ;; Place your private configuration here
 
-; Load zenburn theme
-(load-theme 'zenburn t)
+;; Set number of columns to 120, because it's the 21st century
+(setq-default fill-column 120)
+;; Set auto-fill to fill-column above
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
+; Use zenburn theme
+(setq doom-theme 'doom-one)
 
 ;; Set font (I don't know if this actually works)
 (setq doom-font (font-spec :family "Hack Nerd Font" :size 12))
@@ -33,17 +38,41 @@
 ; Org-superstar bullets
 (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
 
+; Set org-mode files to overview mode
+(setq org-startup-folded 't)
+
+; Org-agenda files
 (setq org-agenda-files '("~/org/logbook"
             "~/org/logbook/archive/2019"
             "~/org/logbook/archive/2020"
             "~/org/roam"))
-;; Set minted for org
-;; (setq org-latex-pdf-process
-;;  '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-;;    "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-;;    "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-;; (add-to-list 'org-latex-packages-alist '("minted"))
-;; (setq org-latex-listings 'minted)
+
+;; Org-latex classes
+(with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes
+    '("elsarticle"
+    "\\documentclass{elsarticle}"
+    ("\\section{%s}" . "\\section*{%s}")
+    ("\\subsection{%s}" . "\\subsection*{%s}")
+    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  )
+
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+
+;(setq org-latex-pdf-process
+;      '("pdflatex -interaction nonstopmode -output-directory %o %f"
+;        "bibtex %b"
+;        "pdflatex -interaction nonstopmode -output-directory %o %f"
+;        "pdflatex -interaction nonstopmode -output-directory %o %f"))
+
+;(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+
+;; Set plantuml stuff
+; For macOS only
+(setq org-plantuml-jar-path (expand-file-name "/usr/local/Cellar/plantuml/1.2020.12/libexec/plantuml.jar"))
 
 ;; Setup emms
 (setq emms-source-file-default-directory "~/Music/music_library")
@@ -58,3 +87,42 @@
       "e p"   #'emms-previous
       "e e"   #'emms
       )
+
+; Mermaid diagrams
+(setq ob-mermaid-cli-path "/usr/local/bin/mmdc")
+
+;; Tweak some org stuff
+(use-package-hook! org
+  :pre-config
+  ; Change Org elipses
+  ; (setq org-ellipsis "⤵")
+
+  ; Set new org-todo tags
+  (setq org-todo-keywords
+	'((sequence
+		"📥(t)"    ; Task that needs to be done
+		"👷🛠(s)"  ; Task that has been started
+		"|"
+		"🎉😎(d)"  ; Task has been completed
+		"💀👻(k)"  ; Task has been killed without completion
+		"|"
+		"📅📝(m)"  ; Meeting
+		"🤔💭(i)"  ; An idea or thought to be considered.  Could later become a task/project
+		))
+	org-todo-keyword-faces
+	'(("👷🛠"  .  +org-todo-active)
+	  )
+	)
+  nil
+
+  (use-package! org-superstar
+    :hook (org-mode . org-superstar-mode)
+    )
+  )
+
+(use-package-hook! flycheck
+  :pre-config
+  (use-package! flycheck-clang-tidy
+    :hook (flycheck-mode . flycheck-clang-tidy-setup)
+    )
+  )

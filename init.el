@@ -8,41 +8,7 @@
 ;; More information about these modules (and what flags they support) can be
 ;; found in modules/README.org.
 
-;; Tweak some org stuff
-(use-package-hook! org
-  :pre-config
-  ; Change Org elipses
-  (setq org-ellipsis "⤵")
-
-  ; Set new org-todo tags
-  (setq org-todo-keywords
-	'((sequence
-		"📥(t)"    ; Task that needs to be done
-		"👷🛠(s)"  ; Task that has been started
-		"|"
-		"🎉😎(d)"  ; Task has been completed
-		"💀👻(k)"  ; Task has been killed without completion
-		"|"
-		"📅📝(m)"  ; Meeting
-		"🤔💭(i)"  ; An idea or thought to be considered.  Could later become a task/project
-		))
-	org-todo-keyword-faces
-	'(("👷🛠"  .  +org-todo-active)
-	  )
-	)
-  nil
-
-  (use-package! org-superstar
-    :hook (org-mode . org-superstar-mode)
-    )
-  )
-
-(use-package-hook! flycheck
-  :pre-config
-  (use-package! flycheck-clang-tidy
-    :hook (flycheck-mode . flycheck-clang-tidy-setup)
-    )
-  )
+(setq use-package-inject-hooks t)
 
 (doom! :input
        ;;chinese
@@ -135,7 +101,7 @@
        ;;agda              ; types of types of types of types...
        ;;assembly          ; assembly for fun or debugging
        cc                ; C/C++/Obj-C madness
-       ;;clojure           ; java with a lisp
+       clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
@@ -170,9 +136,9 @@
         +ipython         ; ipython/jupyter support for babel
         +pandoc          ; export-with-pandoc support
         ;+pomodoro        ; be fruitful with the tomato technique
-		+roam              ; Roam Research, but in emacs
-		+dragndrop         ; Drag 'n drop into org files
-		+journal           ; Journal/log in org
+	+roam2             ; Roam Research, but in emacs
+	+dragndrop         ; Drag 'n drop into org files
+	+journal           ; Journal/log in org
         +present)        ; using org-mode for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
@@ -186,7 +152,7 @@
        rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
-       sh                ; she sells {ba,z,fi}sh shells on the C xor
+       ;;sh                ; she sells {ba,z,fi}sh shells on the C xor
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.

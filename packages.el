@@ -13,9 +13,20 @@
 (package! org-superstar)
 (package! flycheck-clang-tidy)
 (package! multi-vterm)
-(package! org-roam)
 (package! emms)
-  
+(package! ob-mermaid)
+(package! org-ref)
+
+(package! org-roam-bibtex
+  :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+;(package! ox-extra)
+
+;; When using org-roam via the `+roam` flag
+(unpin! org-roam company-org-roam)
+
+;; When using bibtex-completion via the `biblio` module
+(unpin! bibtex-completion helm-bibtex ivy-bibtex)
+
 
 ;;; Turn off stock packages
 (disable-packages! org-bullets)
