@@ -11,7 +11,7 @@
 (setq doom-theme 'doom-one)
 
 ;; Set font (I don't know if this actually works)
-(setq doom-font (font-spec :family "Hack Nerd Font" :size 12))
+(setq doom-font (font-spec :family "Hack" :size 12))
 
 ;; Set vterm to use zsh
 (setq vterm-shell "/bin/zsh")
